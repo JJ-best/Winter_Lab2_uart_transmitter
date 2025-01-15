@@ -4,3 +4,5 @@
 2. uart-transmitter HLS waveform
 <img width="887" alt="image" src="https://github.com/user-attachments/assets/c13cf273-ce35-4d46-a81e-5499bf699a45" />
 
+3. verilog simulation
+<img width="916" alt="image" src="https://github.com/user-attachments/assets/8d3eeb19-7469-4526-81ee-43da64904cb0" />
