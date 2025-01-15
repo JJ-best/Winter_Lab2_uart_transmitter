@@ -33,11 +33,12 @@ void uart_transmitter(bool &uart_tx, ap_uint<8> data, bool baud_rate_signal, boo
 #pragma HLS INTERFACE ap_none port=start
 #pragma HLS INTERFACE ap_ctrl_none port=return
 
-
+	//uart 1(1-bit stopbit) + 8-bit data + 0(1-bit startbit).
+	//reciever will read the data from right to the left.
 	ap_uint<10> d = ((bool)0b1, (ap_int<8>)data, (bool)0b0);
 
-
-	static unsigned int              bit_counter = 0;
+	//count how many bit of data have been transmmited
+	static unsigned int              bit_counter = 0;	
 	static uart_transmit_states_type state = idle;
 
 
@@ -70,7 +71,7 @@ void uart_transmitter(bool &uart_tx, ap_uint<8> data, bool baud_rate_signal, boo
 				uart_tx_local    =  d[bit_counter];
 				next_bit_counter =  bit_counter+1;
 			}
-		} else {
+		} else {									
 			if (bit_counter == 0) {
 				uart_tx_local    =  1;
 			} else {
