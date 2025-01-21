@@ -66,6 +66,7 @@ initial begin
     rst = 0;
 end
 
+//start control
 initial begin
     wait(rst == 1);
     wait(rst == 0);
@@ -85,7 +86,7 @@ initial begin
             @(posedge baud_rate_signal);
             if (count == 9) begin
                 count = 0;
-                data = data + 1;  //transmit complete
+                data = data + 1;  //transmit complete (10-bit)
             end else begin //count != 10
                 count = count + 1;
                 data = data;
